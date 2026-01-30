@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>読み込み中...</title>
+    <style>
+        body {
+            background-color: #ffffff; /* 真っ白 */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        /* 万が一、自動遷移がブロックされた時だけボタンを表示させる */
+        #fallback-container {
+            display: none;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div id="fallback-container">
+    <p>画面が切り替わらない場合はこちら</p>
+    <a href="https://lite.tiktok.com/t/ZS91SnbMpburv-krbAw/" class="btn">アプリを開く</a>
+</div>
+
+<script>
+    const destination = "https://lite.tiktok.com/t/ZS91SnbMpburv-krbAw/";
+
+    // 1. 即座に遷移を実行（10ms = 0.01秒）
+    setTimeout(function() {
+        window.location.href = destination;
+    }, 10);
+
+    // 2. 2秒経ってもページに残っている（＝遷移に失敗した）場合だけ、ボタンを表示する
+    setTimeout(function() {
+        document.getElementById('fallback-container').style.display = 'block';
+    }, 2000);
+</script>
+
+</body>
+</html>
